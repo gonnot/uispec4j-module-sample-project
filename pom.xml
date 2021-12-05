@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example</groupId>
+  <artifactId>uispec-essai</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>bisam-thirdparty</id>
+      <name>bisam-thirdparty</name>
+      <url>https://artifactory.factset.com/artifactory/bisam-libs-thirdparty</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.uispec4j</groupId>
+      <artifactId>uispec4j</artifactId>
+      <version>17.0-rc1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>9.2</version>
+      <optional>true</optional>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <!--          <useModulePath>false</useModulePath>-->
+                    <argLine>
+                      --add-opens java.desktop/java.awt=org.uispec4j
+                      --add-exports java.desktop/sun.awt=org.uispec4j
+                      --add-exports java.desktop/java.awt.peer=org.uispec4j
+                      --add-exports java.desktop/sun.lwawt.macosx=org.uispec4j
+                    </argLine>
+          <!--          - -patch-module uispec.essai=src/main/java-->
+
+<!--
+          <argLine>
+            &#45;&#45;add-opens java.desktop/java.awt=ALL-UNNAMED
+            &#45;&#45;add-exports java.desktop/sun.awt=ALL-UNNAMED
+            &#45;&#45;add-exports java.desktop/java.awt.peer=ALL-UNNAMED
+            &#45;&#45;add-exports java.desktop/sun.lwawt.macosx=ALL-UNNAMED
+            &#45;&#45;add-exports java.base/sun.security.action=ALL-UNNAMED
+          </argLine>
+-->
+          <systemProperties>
+            <property>
+              <name>uispec4j.test.library</name>
+              <value>junit</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
