@@ -58,24 +58,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-          <!--          <useModulePath>false</useModulePath>-->
-                    <argLine>
-                      --add-opens java.desktop/java.awt=org.uispec4j
-                      --add-exports java.desktop/sun.awt=org.uispec4j
-                      --add-exports java.desktop/java.awt.peer=org.uispec4j
-                      --add-exports java.desktop/sun.lwawt.macosx=org.uispec4j
-                    </argLine>
-          <!--          - -patch-module uispec.essai=src/main/java-->
-
-<!--
           <argLine>
-            &#45;&#45;add-opens java.desktop/java.awt=ALL-UNNAMED
-            &#45;&#45;add-exports java.desktop/sun.awt=ALL-UNNAMED
-            &#45;&#45;add-exports java.desktop/java.awt.peer=ALL-UNNAMED
-            &#45;&#45;add-exports java.desktop/sun.lwawt.macosx=ALL-UNNAMED
-            &#45;&#45;add-exports java.base/sun.security.action=ALL-UNNAMED
+            --add-opens java.desktop/java.awt=org.uispec4j
+            --add-exports java.desktop/sun.awt=org.uispec4j
+            --add-exports java.desktop/java.awt.peer=org.uispec4j
+            --add-exports java.desktop/sun.lwawt.macosx=org.uispec4j
           </argLine>
--->
           <systemProperties>
             <property>
               <name>uispec4j.test.library</name>

@@ -1,6 +1,6 @@
-module uispec.essai {
+module org.example.uispec {
   requires java.desktop;
 
-  opens org.example;
-  exports org.example;
+  exports org.example.uispec;
+  opens org.example.uispec;
 }

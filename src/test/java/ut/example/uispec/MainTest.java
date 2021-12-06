@@ -1,6 +1,6 @@
-package tst.example;
+package ut.example.uispec;
 
-import org.example.Main;
+import org.example.uispec.Main;
 import org.junit.jupiter.api.Test;
 import org.uispec4j.Panel;
 import org.uispec4j.Trigger;
@@ -18,13 +18,13 @@ class MainTest {
   }
 
   @Test
-  void name() {
+  void basic_assertion_works() {
     Panel panel = new Panel(new Main());
     assertTrue(panel.containsLabel("Boris"));
   }
 
   @Test
-  void interceptor() {
+  void interceptor_engine_works() {
     WindowInterceptor
       .init(() -> Main.main(new String[0]))
       .process(new WindowHandler() {
@@ -35,9 +35,5 @@ class MainTest {
         }
       })
       .run();
-  }
-
-  @Test
-  void empty() {
   }
 }
